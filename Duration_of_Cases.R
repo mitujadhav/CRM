@@ -72,7 +72,11 @@ require(sqldf)
 a1NotIna2 <- sqldf('SELECT * FROM a2 EXCEPT SELECT * FROM a1')
 a1Ina2 <- sqldf('SELECT * FROM a1 INTERSECT SELECT * FROM a2')
   
+names(a1Ina2)<-"Opportunity.Id"
+  
+w<-merge(a1Ina2,tableau_opportunity,by="Opportunity.Id")  
   
   
+  write.csv(w,"Losing_Opportunity.csv")
   
   
